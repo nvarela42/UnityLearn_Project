@@ -16,6 +16,7 @@ public abstract class Unit : MonoBehaviour,
     protected NavMeshAgent m_Agent;
     protected Building m_Target;
 
+
     protected void Awake()
     {
         m_Agent = GetComponent<NavMeshAgent>();
@@ -26,15 +27,9 @@ public abstract class Unit : MonoBehaviour,
 
     private void Start()
     {
-
-    }
-
-    void SetColor(Color c)
-    {
-        var colorHandler = GetComponentInChildren<ColorHandler>();
-        if (colorHandler != null)
+        if (MainManager.Instance != null)
         {
-            colorHandler.SetColor(c);
+            SetColor(MainManager.Instance.TeamColor);
         }
     }
 
@@ -48,6 +43,14 @@ public abstract class Unit : MonoBehaviour,
                 m_Agent.isStopped = true;
                 BuildingInRange();
             }
+        }
+    }
+    void SetColor(Color c)
+    {
+        var colorHandler = GetComponentInChildren<ColorHandler>();
+        if (colorHandler != null)
+        {
+            colorHandler.SetColor(c);
         }
     }
 

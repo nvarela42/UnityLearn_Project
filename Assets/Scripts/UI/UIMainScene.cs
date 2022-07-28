@@ -59,6 +59,11 @@ public class UIMainScene : MonoBehaviour
             InfoPopup.AddToContent(entry.Count, icon);
         }
     }
+    
+    private void BackToMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
 
     public void SetNewInfoContent(IUIInfoContent content)
     {
